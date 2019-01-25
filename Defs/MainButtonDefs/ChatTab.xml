@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MainButtonDef>
+    <defName>RimChat_Chat</defName>
+    <label>chat</label>
+    <description>Chat session</description>
+    <tabWindowClass>RimChat.MainTab.MainTab_WindowRimChat</tabWindowClass>
+    <order>200</order>
+  </MainButtonDef>
+
+</Defs>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>RimChat</name>
+	<author>madlad</author>
+	<supportedVersions>
+		<li>1.0</li>
+	</supportedVersions>
+	<description>V0.1
+    	Test mod for networked chatting. Not intended to be used in it's current state.
+	</description>
+</ModMetaData>
