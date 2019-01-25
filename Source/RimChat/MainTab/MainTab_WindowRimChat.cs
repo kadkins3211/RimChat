@@ -55,8 +55,8 @@ namespace RimChat.MainTab
             }
 
             // host and port inputs
-            Manager.InputHost = Widgets.TextArea(joinHostRect, Manager.InputHost);
-            Manager.InputPort = Widgets.TextArea(joingPortRect, Manager.InputPort);
+            Manager.InputHost = Widgets.TextField(joinHostRect, Manager.InputHost);
+            Manager.InputPort = Widgets.TextField(joingPortRect, Manager.InputPort);
 
             // Start a server
             if(Widgets.ButtonText(hostButtonRect, "RimChat.Tab.Page.Button.Host".Translate(), true, false, true))
@@ -77,27 +77,27 @@ namespace RimChat.MainTab
             Widgets.EndScrollView();
             GUI.EndGroup();
 
+            // Capture enter key and update messages, needs to go before the textarea update
+            if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.KeypadEnter || Event.current.keyCode == KeyCode.Return))
+            {
+                UpdateMessageList();
+                Event.current.Use();
+            }
+
             // Chat Input          
-            Manager.InputText = Widgets.TextArea(textInputRect, Manager.InputText);
+            Manager.InputText = Widgets.TextField(textInputRect, Manager.InputText);
 
             // Send button 
             if(Widgets.ButtonText(sendButtonRect, "RimChat.Tab.Page.Button.Send".Translate(), true, false, true))
             {
                 UpdateMessageList();
             }
-            // Capture enter key and update messages
-            if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.KeypadEnter || Event.current.keyCode == KeyCode.Return))
-            {
-                Manager.Messages.Add("Enter key detected..");
-                UpdateMessageList();
-                Event.current.Use();
-            }
         }
 
         // Updates message list with input text and sends to the server if connected
         private void UpdateMessageList()
         {
-            Manager.Messages.Add(Manager.InputText);           
+            //Manager.Messages.Add(Manager.InputText);           
             if (Manager.InputText == "clear")
             {
                 Manager.Messages.Clear();
